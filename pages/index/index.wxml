@@ -1,0 +1,46 @@
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-title">抽象丑脸</view>
+    <view class="hero-sub">{{tip}}</view>
+  </view>
+
+  <view class="stage">
+    <canvas
+      type="2d"
+      id="face"
+      class="face-canvas"
+      style="width:{{size}}px;height:{{size}}px;"
+    ></canvas>
+    <view class="busy-mask" wx:if="{{busy}}">
+      <view class="busy-dot"></view>
+      <text class="busy-text">正在长脸…</text>
+    </view>
+  </view>
+
+  <view class="swatches" wx:if="{{swatches.length}}">
+    <view class="swatch" wx:for="{{swatches}}" wx:key="name">
+      <view class="swatch-dot" style="background:{{item.color}};"></view>
+      <text class="swatch-name">{{item.name}}</text>
+    </view>
+    <view class="swatch-clear" bindtap="onReset" hover-class="swatch-clear-hover">清除</view>
+  </view>
+
+  <view class="actions">
+    <button class="btn btn-primary" hover-class="btn-hover" bindtap="onRegenerate">
+      重新生成
+    </button>
+    <button class="btn btn-ghost" hover-class="btn-hover" bindtap="onUpload">
+      上传图片
+    </button>
+  </view>
+
+  <button class="btn btn-save" hover-class="btn-hover" bindtap="onSave">
+    保存到相册
+  </button>
+
+  <view class="footer">
+    <text>全部在手机本地运算 · 图片不会上传 · 不消耗流量</text>
+  </view>
+
+</view>
